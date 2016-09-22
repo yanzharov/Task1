@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="http://www.mynamespace.org/myXmlSchema1"
+        xmlns:mn="http://www.mynamespace.org/myXmlSchema1">
+    <complexType name="init-param">
+        <sequence>
+            <element name="param-name" type="string" />
+            <element name="param-value" type="string" />
+        </sequence>
+    </complexType> 
+    <element name="web-app">
+        <complexType>
+            <choice minOccurs="0" maxOccurs="unbounded">                    
+                <element name="display-name" type="string"/>         
+                <element name="welcome-file-list">
+                    <complexType>
+                        <sequence  minOccurs="0" maxOccurs="unbounded">
+                            <element name="welcome-file" type="string"/>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="filter">
+                    <complexType>
+                        <sequence>
+                            <element name="filter-name" type="string" />
+                            <element name="filter-class" type="string" />
+                            <element name="init-param" type="mn:init-param" minOccurs="0" maxOccurs="unbounded"/>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="filter-mapping">
+                    <complexType>
+                        <sequence>
+                            <element name="filter-name" type="string" />
+                            <element name="url-pattern" type="string" />
+                            <element name="dispatcher" type="string" />
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="listener">
+                    <complexType>
+                        <sequence>
+                            <element name="listener-class" type="string" />
+                        </sequence>
+                    </complexType>
+                </element>  
+                <element name="servlet">
+                    <complexType>
+                        <sequence>
+                            <element name="servlet-name" type="string" />
+                            <element name="servlet-class" type="string" />
+                            <element name="init-param" type="mn:init-param" minOccurs="0" maxOccurs="unbounded"/>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="servlet-mapping">
+                    <complexType>
+                        <sequence>
+                            <element name="servlet-name" type="string" />
+                            <element name="url-pattern" type="string" />
+                        </sequence>
+                    </complexType>
+                </element>  
+                <element name="error-page">
+                    <complexType>
+                        <sequence>
+                            <choice>
+                                <element name="exception-type" type="string" />
+                                <element name="error-code" type="int" />
+                            </choice>
+                            <element name="location" type="string"/>
+                        </sequence>
+                    </complexType>
+                </element>
+            </choice>
+            <attribute name="id" type="string" />
+            <attribute name="version" type="string" />
+        </complexType>
+    </element>        
+</schema>
