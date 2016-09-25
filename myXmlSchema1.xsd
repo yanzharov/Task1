@@ -2,12 +2,6 @@
 <schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
         targetNamespace="http://www.mynamespace.org/myXmlSchema1"
         xmlns:mn="http://www.mynamespace.org/myXmlSchema1">
-    <complexType name="init-param">
-        <sequence>
-            <element name="param-name" type="string" />
-            <element name="param-value" type="string" />
-        </sequence>
-    </complexType> 
     <element name="web-app">
         <complexType>
             <choice minOccurs="0" maxOccurs="unbounded">                    
@@ -24,7 +18,7 @@
                         <sequence>
                             <element name="filter-name" type="string" />
                             <element name="filter-class" type="string" />
-                            <element name="init-param" type="mn:init-param" minOccurs="0" maxOccurs="unbounded"/>
+                            <element name="init-param" type="mn:Init-param" minOccurs="0" maxOccurs="unbounded"/>
                         </sequence>
                     </complexType>
                 </element>
@@ -49,7 +43,7 @@
                         <sequence>
                             <element name="servlet-name" type="string" />
                             <element name="servlet-class" type="string" />
-                            <element name="init-param" type="mn:init-param" minOccurs="0" maxOccurs="unbounded"/>
+                            <element name="init-param" type="mn:Init-param" minOccurs="0" maxOccurs="unbounded"/>
                         </sequence>
                     </complexType>
                 </element>
@@ -76,5 +70,11 @@
             <attribute name="id" type="string" />
             <attribute name="version" type="string" />
         </complexType>
-    </element>        
+    </element>
+    <complexType name="Init-param">
+        <sequence>
+            <element name="param-name" type="string" />
+            <element name="param-value" type="string" />
+        </sequence>
+    </complexType> 
 </schema>
